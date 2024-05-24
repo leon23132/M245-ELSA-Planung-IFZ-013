@@ -1,6 +1,7 @@
 package m459.TodoApplication.TodoApp.Model;
 
 import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,8 +29,8 @@ public class SideQuest {
     private String sqDay;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Module_modul_id", nullable = false)
-    private Module module;
+    @JoinColumn(name = "module_id", referencedColumnName = "modulId", nullable = false)
+    private Modules module;
 
     @Column(name = "sq_time", nullable = false)
     private String sqTime;
@@ -40,7 +41,23 @@ public class SideQuest {
     @Column(name = "sq_deadline", nullable = false)
     private Date sqDeadline;
 
-    // Constructors, getters, and setters
+    // Constructors
+
+    public SideQuest() {
+    }
+
+    public SideQuest(String sqName, String sqDescription, String sqDay, Modules module, String sqTime, String sqWeek, Date sqDeadline) {
+        this.sqName = sqName;
+        this.sqDescription = sqDescription;
+        this.sqDay = sqDay;
+        this.module = module;
+        this.sqTime = sqTime;
+        this.sqWeek = sqWeek;
+        this.sqDeadline = sqDeadline;
+    }
+
+    // Getters and Setters
+
     public int getSqId() {
         return sqId;
     }
@@ -73,11 +90,11 @@ public class SideQuest {
         this.sqDay = sqDay;
     }
 
-    public Module getModule() {
+    public Modules getModule() {
         return module;
     }
 
-    public void setModule(Module module) {
+    public void setModule(Modules module) {
         this.module = module;
     }
 
@@ -104,5 +121,19 @@ public class SideQuest {
     public void setSqDeadline(Date sqDeadline) {
         this.sqDeadline = sqDeadline;
     }
-}
 
+    // toString method
+    @Override
+    public String toString() {
+        return "SideQuest{" +
+                "sqId=" + sqId +
+                ", sqName='" + sqName + '\'' +
+                ", sqDescription='" + sqDescription + '\'' +
+                ", sqDay='" + sqDay + '\'' +
+                ", module=" + module +
+                ", sqTime='" + sqTime + '\'' +
+                ", sqWeek='" + sqWeek + '\'' +
+                ", sqDeadline=" + sqDeadline +
+                '}';
+    }
+}

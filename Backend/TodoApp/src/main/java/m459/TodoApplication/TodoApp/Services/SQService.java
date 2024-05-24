@@ -16,16 +16,14 @@ public class SQService {
     private final ModuleRepository moduleRepository;
     private final SideQuestRepository sideQuestRepository;
     private final UserSqRepository userSqRepository;
-
     @Autowired
-    public SQService(ModuleRepository moduleRepository, SideQuestRepository sideQuestRepository,
-            UserSqRepository userSqRepository) {
+    public SQService(ModuleRepository moduleRepository, SideQuestRepository sideQuestRepository, UserSqRepository userSqRepository) {
         this.moduleRepository = moduleRepository;
         this.userSqRepository = userSqRepository;
         this.sideQuestRepository = sideQuestRepository;
     }
 
-    public List<UserSq> getUserSqsByUsernameAndDay(String username, String day) {
+   public List<UserSq> getUserSqsByUsernameAndDay(String username, String day) {
         return userSqRepository.findUserSqsByUsernameAndDay(username, day);
     }
 

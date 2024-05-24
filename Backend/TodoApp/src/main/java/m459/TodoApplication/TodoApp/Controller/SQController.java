@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import m459.TodoApplication.TodoApp.Model.SideQuest;
 import m459.TodoApplication.TodoApp.Model.UserSq;
 import m459.TodoApplication.TodoApp.Services.SQService;
 
