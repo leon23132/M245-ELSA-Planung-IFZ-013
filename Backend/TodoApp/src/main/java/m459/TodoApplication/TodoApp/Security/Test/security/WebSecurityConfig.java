@@ -98,7 +98,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
               .requestMatchers("/api/test/**").permitAll()
               .requestMatchers("/tasks/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
               .requestMatchers("/tasks/**").hasAuthority("ROLE_USER")
-              .requestMatchers("/filtered/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+              .requestMatchers("/sqs/**").permitAll()
               .anyRequest().authenticated()
         );
     

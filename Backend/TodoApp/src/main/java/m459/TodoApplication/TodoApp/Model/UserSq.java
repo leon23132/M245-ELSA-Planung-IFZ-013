@@ -1,6 +1,5 @@
 package m459.TodoApplication.TodoApp.Model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,22 +14,32 @@ import m459.TodoApplication.TodoApp.Model.Users.User;
 @Entity
 @Table(name = "user_sqs")
 public class UserSq {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // Änderung hier: FetchType.LAZY
     @JoinColumn(name = "sq_id", nullable = false)
-    private SideQuest sideQuest;
+    private Sidequests sideQuest;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // Änderung hier: FetchType.LAZY
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "user_sqStatus", nullable = false)
+    @Column(name = "user_sq_status", nullable = false)
     private int userSqStatus;
 
-    // Constructors, getters, and setters
+    @Column(name = "user_sq_status_finish", nullable = false)
+    private int userSqStatusFinish;
+
+    // Constructors
+
+    public UserSq() {
+    }
+
+    // Getters and Setters
+
     public int getId() {
         return id;
     }
@@ -39,11 +48,11 @@ public class UserSq {
         this.id = id;
     }
 
-    public SideQuest getSideQuest() {
+    public Sidequests getSideQuest() {
         return sideQuest;
     }
 
-    public void setSideQuest(SideQuest sideQuest) {
+    public void setSideQuest(Sidequests sideQuest) {
         this.sideQuest = sideQuest;
     }
 
@@ -62,5 +71,18 @@ public class UserSq {
     public void setUserSqStatus(int userSqStatus) {
         this.userSqStatus = userSqStatus;
     }
-}
 
+    public int getUserSqStatusFinish() {
+        return userSqStatusFinish;
+    }
+
+    public void setUserSqStatusFinish(int userSqStatusFinish) {
+        this.userSqStatusFinish = userSqStatusFinish;
+    }
+
+    // Methode zur Aktualisierung der Benutzerstatusinformationen
+    public void updateStatusInfo(int userSqStatus, int userSqStatusFinish) {
+        this.userSqStatus = userSqStatus;
+        this.userSqStatusFinish = userSqStatusFinish;
+    }
+}
