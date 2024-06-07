@@ -1,16 +1,10 @@
 package m459.TodoApplication.TodoApp.Model;
 
-
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,20 +18,18 @@ public class Module {
 
     @Column(name = "modul_name")
     private String moduleName;
-    
+
     @Column(name = "modul_description")
     private String moduleDescription;
 
     @Column(name = "modul_day")
     private String moduleDay;
 
-    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Sidequests> sideQuests;
+    // Standardkonstruktor
+    public Module() {
+    }
 
-    // Constructors
-    public Module() {}
-
-    // Getters and Setters
+    // Getters und Setters
     public int getModulId() {
         return modulId;
     }
@@ -53,7 +45,7 @@ public class Module {
     public void setModuleName(String moduleName) {
         this.moduleName = moduleName;
     }
-    
+
     public String getModuleDescription() {
         return moduleDescription;
     }
@@ -68,13 +60,5 @@ public class Module {
 
     public void setModuleDay(String moduleDay) {
         this.moduleDay = moduleDay;
-    }
-
-    public List<Sidequests> getSideQuests() {
-        return sideQuests;
-    }
-
-    public void setSideQuests(List<Sidequests> sideQuests) {
-        this.sideQuests = sideQuests;
     }
 }

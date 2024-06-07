@@ -5,6 +5,8 @@ import { TaskDisplay } from "./TaskDisplay";
 import './CSS/GlobalNavigationSt.css';
 import LoginForm from "./Login/LoginForm";
 import SignupForm from "./Login/SignupForm";
+import ModuleDisplay from "./MyPlanner/ModuleDisplay";
+
 
 export function GlobalNavigation() {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Zustand für den Anmeldestatus
@@ -28,6 +30,13 @@ export function GlobalNavigation() {
                         {isLoggedIn && (
                             <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
                                 to="/task">Task</NavLink>
+
+                        )}
+
+                        {isLoggedIn && (
+                            <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
+                                to="/modules">Module</NavLink>
+
                         )}
 
                         {/* Wenn der Benutzer nicht angemeldet ist, zeige den Link zum LoginForm */}
@@ -54,6 +63,7 @@ export function GlobalNavigation() {
                         <Routes>
                             <Route path="/LoginForm" element={<LoginForm onLogin={handleLogin} />} />
                             <Route path="/home" element={<Home />} />
+                            <Route path="/modules" element={<ModuleDisplay />} /> // Füge die Route zur ModuleDisplay-Seite hinzu
                             <Route path="/task" element={isLoggedIn ? <TaskDisplay /> : <Navigate to={"/LoginForm"} />} />
                             <Route path="/" element={<Navigate to="/home" />} />
                             <Route path="/Signup" element={<SignupForm />} />

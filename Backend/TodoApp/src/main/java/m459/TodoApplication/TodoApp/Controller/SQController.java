@@ -87,6 +87,11 @@ public class SQController {
         }
     }
 
-    
+    @GetMapping("/filteredByWeekAndDay")
+    public List<UserSq> getSideQuestsByUsernameWeekAndDay(@RequestParam String username,
+                                                          @RequestParam String week,
+                                                          @RequestParam String day) {
+        return sqService.findSideQuestsByUsernameWeekAndDay(username, week, day);
+    }
 
 }

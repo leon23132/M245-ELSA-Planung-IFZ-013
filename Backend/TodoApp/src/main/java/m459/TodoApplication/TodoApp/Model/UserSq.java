@@ -1,14 +1,6 @@
 package m459.TodoApplication.TodoApp.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import m459.TodoApplication.TodoApp.Model.Users.User;
 
 @Entity
@@ -19,11 +11,11 @@ public class UserSq {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Änderung hier: FetchType.LAZY
+    @ManyToOne
     @JoinColumn(name = "sq_id", nullable = false)
     private Sidequests sideQuest;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Änderung hier: FetchType.LAZY
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -33,13 +25,11 @@ public class UserSq {
     @Column(name = "user_sq_status_finish", nullable = false)
     private int userSqStatusFinish;
 
-    // Constructors
-
+    // Standardkonstruktor
     public UserSq() {
     }
 
-    // Getters and Setters
-
+    // Getters und Setters
     public int getId() {
         return id;
     }

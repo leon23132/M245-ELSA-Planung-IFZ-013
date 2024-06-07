@@ -1,0 +1,63 @@
+.module-section{
+    padding: 0%;
+    margin: 0%;
+    min-width: 200px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+ 
+}
+.module-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    padding: 10px;
+    margin: 0.5%;
+    color: #fff;
+}
+
+.module-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+}
+
+.module-day {
+    font-weight: bold;
+    margin-bottom: 10px;
+    min-width: 200px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.Mario {
+    position: absolute; /* Position absolut, um den Mario innerhalb des .module-day zu positionieren */
+    top: -50px; /* Anpassen der Top-Position, um den Mario über dem "Monday" zu positionieren */
+    left: 50%; /* Zentrieren des Marios horizontal */
+    transform: translateX(-50%); /* Zentrieren des Marios horizontal */
+}
+
+
+.module-list {
+    margin-right: 10px;
+    margin-left: 0.1%;
+    flex-wrap: wrap; /* Ändere flex-wrap auf wrap */
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.module-block {
+    min-width: 200px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.full-width-mario {
+    width: 100%;
+}
+.mario-block {
+    position: absolute; /* Positionierung relativ zum nächsten positionierten Elternelement */
+    z-index: 1; /* Stelle sicher, dass der Mario-Block über anderen Elementen liegt */
+    /* Optional: Weitere Stilregeln, um die Position des Mario-Blocks anzupassen */
+    top: 0; /* Oben anordnen */
+    left: 0; /* Links anordnen */
+}

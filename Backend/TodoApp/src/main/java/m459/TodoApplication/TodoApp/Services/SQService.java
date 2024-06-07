@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 import m459.TodoApplication.TodoApp.Model.UserSq;
 import m459.TodoApplication.TodoApp.Repository.UserSqRepository;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import m459.TodoApplication.TodoApp.Model.Module;
 import m459.TodoApplication.TodoApp.Model.Sidequests;
 import m459.TodoApplication.TodoApp.Repository.ModuleRepository;
@@ -40,22 +41,23 @@ public class SQService {
      * }
      */
 
-    public List<Map<String, Object>> getUserSqsByUsernameAndDay(String username, String day) {
+     public List<Map<String, Object>> getUserSqsByUsernameAndDay(String username, String day) {
         List<Map<String, Object>> result = new ArrayList<>();
-
-        List<Object[]> queryResult = userSqRepository.findUserSqsByUsernameAndDay(username, day);
-        for (Object[] row : queryResult) {
+    
+        List<Map<String, Object>> queryResult = userSqRepository.findUserSqsByUsernameAndDay(username, day);
+        for (Map<String, Object> row : queryResult) {
             Map<String, Object> resultMap = new HashMap<>();
-            resultMap.put("username", row[0]);
-            resultMap.put("sqName", row[1]);
-            resultMap.put("sqDescription", row[2]);
-            resultMap.put("modulDay", row[3]);
-            resultMap.put("userSqStatus", row[4]);
+            resultMap.put("username", row.get("username"));
+            resultMap.put("sqName", row.get("sqName"));
+            resultMap.put("sqDescription", row.get("sqDescription"));
+            resultMap.put("modulDay", row.get("modulDay"));
+            resultMap.put("userSqStatus", row.get("userSqStatus"));
             result.add(resultMap);
         }
-
+    
         return result;
     }
+    
 
     public List<UserSq> getAllUserSqs() {
         return userSqRepository.findAll();
@@ -75,7 +77,7 @@ public class SQService {
     }
     
     
-    
+    /*
 
  // SQService.java
 public UserSq updateUserSq(UserSq userSq) {
@@ -95,7 +97,34 @@ public UserSq updateUserSq(UserSq userSq) {
     }
 }
 
+*/
 
+private final Logger logger = LoggerFactory.getLogger(SQService.class);
+
+// Andere Methoden...
+
+public UserSq updateUserSq(UserSq userSq) {
+    // Überprüfen, ob der Eintrag existiert
+    Optional<UserSq> existingUserSqOptional = userSqRepository.findById(userSq.getId());
+    if (existingUserSqOptional.isPresent()) {
+        UserSq existingUserSq = existingUserSqOptional.get();
+        // Aktualisiere die relevanten Felder
+        existingUserSq.setUserSqStatus(userSq.getUserSqStatus());
+        existingUserSq.setUserSqStatusFinish(userSq.getUserSqStatusFinish());
+        // Speichere die Aktualisierung
+        UserSq updatedUserSq = userSqRepository.save(existingUserSq);
+        logger.info("UserSq erfolgreich aktualisiert: {}", updatedUserSq);
+        return updatedUserSq;
+    } else {
+        // Wenn der Eintrag nicht gefunden wurde
+        logger.error("UserSq nicht gefunden mit ID: {}", userSq.getId());
+        throw new IllegalArgumentException("UserSq not found with id: " + userSq.getId());
+    }
+}
+
+public List<UserSq> findSideQuestsByUsernameWeekAndDay(String username, String week, String day) {
+    return userSqRepository.findSideQuestsByUsernameWeekAndDay(username, week, day);
+}
 
 
     

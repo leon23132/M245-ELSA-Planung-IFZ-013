@@ -1,0 +1,54 @@
+/* SidequestOverview.css */
+
+.sidequest-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .sidequest-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .sidequest-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidequest-item {
+    margin-bottom: 10px;
+  }
+  
+  .sidequest-name {
+    font-weight: bold;
+  }
+  
+  .sidequest-description {
+    color: #555;
+  }
+  
+  .sidequest-status {
+    margin-left: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .sidequest-status-finished {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .sidequest-status-in-progress {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .sidequest-status-upcoming {
+    background-color: #2196f3;
+    color: white;
+  }
+  

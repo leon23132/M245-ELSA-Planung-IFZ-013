@@ -1,0 +1,12 @@
+.MarioImage {
+    width: 100px; /* Setze die Breite der Mario-Bilder */
+    height: auto; /* Auto-Höhe, um das Seitenverhältnis beizubehalten */
+}
+
+.ButtonsContainer {
+    margin-top: 20px; /* Abstand zum oberen Element */
+}
+
+button {
+    margin-right: 10px; /* Abstand zwischen den Buttons */
+}

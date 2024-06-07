@@ -1,6 +1,15 @@
 package m459.TodoApplication.TodoApp.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 import java.util.Date;
 
 @Entity
@@ -21,9 +30,9 @@ public class Sidequests {
     @Column(name = "sq_Day")
     private String sqDay;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "Module_modul_id", referencedColumnName = "modul_id")
-    private Module module;    
+    private Module module;
 
     @Column(name = "sq_time")
     private String sqTime;
@@ -35,9 +44,10 @@ public class Sidequests {
     private Date sqDeadline;
 
     // Standardkonstruktor
-    public Sidequests() {}
+    public Sidequests() {
+    }
 
-    // Getter und Setter
+    // Getters und Setters
     public int getSqId() {
         return sqId;
     }
@@ -100,30 +110,5 @@ public class Sidequests {
 
     public void setSqDeadline(Date sqDeadline) {
         this.sqDeadline = sqDeadline;
-    }
-
-    // Update-Methode
-    public void updateSidequest(Sidequests updatedSidequest) {
-        if (updatedSidequest.getSqName() != null) {
-            this.sqName = updatedSidequest.getSqName();
-        }
-        if (updatedSidequest.getSqDescription() != null) {
-            this.sqDescription = updatedSidequest.getSqDescription();
-        }
-        if (updatedSidequest.getSqDay() != null) {
-            this.sqDay = updatedSidequest.getSqDay();
-        }
-        if (updatedSidequest.getModule() != null) {
-            this.module = updatedSidequest.getModule();
-        }
-        if (updatedSidequest.getSqTime() != null) {
-            this.sqTime = updatedSidequest.getSqTime();
-        }
-        if (updatedSidequest.getSqWeek() != null) {
-            this.sqWeek = updatedSidequest.getSqWeek();
-        }
-        if (updatedSidequest.getSqDeadline() != null) {
-            this.sqDeadline = updatedSidequest.getSqDeadline();
-        }
     }
 }

@@ -1,0 +1,69 @@
+import React, { useState } from "react";
+import { ModuleBlock } from "./ModuleBlock"; // Importiere die ModuleBlock-Komponente
+import './../CSS/MyPlannerCSS/ModuleDisplay.css';
+
+export default function ModuleDisplay() {
+    // Zustand für die Moduldaten und das aktuell ausgeklappte Modul
+    const [modules, setModules] = useState([
+        {
+            id: 1,
+            moduleName: "Combat Training",
+            moduleDescription: "Learn the basics of combat",
+            moduleDay: "Monday",
+            sideQuests: [
+                { sqId: 1, sqName: "Defend the Castle", sqDescription: "Protect the castle from invaders", sqDay: "Monday", sqTime: "10:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false },
+                { sqId: 2, sqName: "Slay the Dragon", sqDescription: "Conquer the fearsome dragon", sqDay: "Monday", sqTime: "14:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: true }
+            ],
+            isOpen: false // Zustand für das Ausklappen
+        },
+        {
+            id: 2,
+            moduleName: "Exploration",
+            moduleDescription: "Explore the unknown territories",
+            moduleDay: "Tuesday",
+            sideQuests: [
+                { sqId: 3, sqName: "Discover the Ancient Ruins", sqDescription: "Uncover the secrets of the ancient ruins", sqDay: "Tuesday", sqTime: "09:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false }
+            ],
+            isOpen: false // Zustand für das Ausklappen
+        },
+        {
+            id: 3,
+            moduleName: "Questing",
+            moduleDescription: "Embark on epic quests",
+            moduleDay: "Wednesday",
+            sideQuests: [
+                { sqId: 4, sqName: "Rescue the Princess", sqDescription: "Save the princess from the evil sorcerer", sqDay: "Wednesday", sqTime: "13:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false },
+                { sqId: 5, sqName: "Retrieve the Holy Relic", sqDescription: "Recover the sacred relic stolen by bandits", sqDay: "Wednesday", sqTime: "15:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false }
+            ],
+            isOpen: false // Zustand für das Ausklappen
+        },
+        // Weitere Testdaten hier hinzufügen...
+    ]);
+
+    // Funktion zum Ausklappen eines Moduls
+    const toggleModuleOpen = (moduleId) => {
+        setModules(prevModules => (
+            prevModules.map(module => {
+                if (module.id === moduleId) {
+                    return { ...module, isOpen: !module.isOpen }; // Aktualisiere den Zustand für das Ausklappen
+                }
+                return module;
+            })
+        ));
+    };
+
+    return (
+        <div className="module-display">
+            <h2>Module Display</h2>
+            {/* Iteriere über die Moduldaten und rendere für jedes Modul einen ModuleBlock */}
+            <div className="module-list">
+                {modules.map(module => (
+                    <React.Fragment key={module.id}>
+                        <div className="module-day">{module.moduleDay}</div> {/* Tag anzeigen */}
+                        <ModuleBlock module={module} isOpen={module.isOpen} toggleModuleOpen={toggleModuleOpen} /> {/* ModuleBlock anzeigen */}
+                    </React.Fragment>
+                ))}
+            </div>
+        </div>
+    );
+}

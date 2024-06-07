@@ -1,0 +1,53 @@
+.module-block {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.module-block:hover {
+    
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-details {
+    margin-top: 10px;
+    
+}
+
+.sidequest-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Hintergrundfarbe der Tabelle */
+}
+
+.sidequest-table th,
+.sidequest-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+background: repeating-linear-gradient(45deg, #000 0 1em, #111 0 2em);
+background-size: cover;
+
+}
+
+.sidequest-table th {
+    
+}
+
+.finished {
+    background-color: lightgreen;
+}
+
+.in-progress {
+    background-color: #ffcccb;
+}
