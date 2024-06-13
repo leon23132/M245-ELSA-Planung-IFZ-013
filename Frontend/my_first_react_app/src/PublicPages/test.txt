@@ -1,113 +1,92 @@
-export async function getData(url) {
-    try {
-        const token = localStorage.getItem('accessToken');
-        const response = await fetch(url, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-                'Accept': '*/*', // Accept-Header hinzufügen
-                'Host': 'calculated at runtime' // Host-Header hinzufügen
-            }
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(`Error fetching data from ${url}:`, error);
-    }
-    return null;
+.App {
+  
+  text-align: center;
+  background: rgb(2,0,36);
+background: radial-gradient(circle, rgba(2,0,36,1) 19%, rgba(0,212,255,1) 46%, rgba(62,62,88,1) 78%);
+background-size: cover;
+
+
+text-align: center;
+background: repeating-linear-gradient(45deg, #000 0 1em, #111 0 2em);
+background-size: cover;
+margin: 0;
+height: auto;
+font: 900 .75em ubuntu, sans-serif;
+display: grid;
+grid-gap: 3em;
+padding-bottom: 0%; 
+
+
+}
+.Bodie-Todo{
+  /*
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 19%, rgba(0,212,255,1) 46%, rgba(62,62,88,1) 78%);
+*/
 }
 
-export async function postData(url, data) {
-    try {
-        const token = localStorage.getItem('accessToken');
-        let response;
-        if (data) {
-            response = await fetch(url,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': '*/*', // Accept-Header hinzufügen
-                        'Host': 'calculated at runtime' // Host-Header hinzufügen
-                    },
-                    body: JSON.stringify(data)
-                }
-            );
-        } else {
-            response = await fetch(url,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': '*/*', // Accept-Header hinzufügen
-                        'Host': 'calculated at runtime' // Host-Header hinzufügen
-                    }
-                }
-            );
-        }
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const result = await response.text();
-        console.log('POST request successful:', result);
-        return result;
-    } catch (error) {
-        console.error('Error during POST request:', error);
-    }
-    return null;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-export async function putData(url, data) {
-    try {
-        const token = localStorage.getItem('accessToken');
-        const response = await fetch(url,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': '*/*', // Accept-Header hinzufügen
-                    'Host': 'calculated at runtime' // Host-Header hinzufügen
-                },
-                body: JSON.stringify(data),
-            }
-        );
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const result = await response.text();
-        console.log('PUT request successful:', result);
-        return result;
-    } catch (error) {
-        console.error('Error during PUT request:', error);
-    }
-    return null;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-export async function deleteData(url) {
-    try {
-        const token = localStorage.getItem('accessToken');
-        const response = await fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-                'Accept': '*/*', // Accept-Header hinzufügen
-                'Host': 'calculated at runtime' // Host-Header hinzufügen
-            }
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const result = await response.text();
-        console.log('DELETE request successful:', result);
-        return result;
-    } catch (error) {
-        console.error('Error during DELETE request:', error);
-    }
-    return null;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  
 }
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Bodie-Todo {
+padding-left: 1%;
+padding-right: 1%;
+padding-bottom: 17%;
+
+}
+
+/* Footer.css */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  
+}
+.LogoImage{
+  display: block;
+  width: 4%;
+  height: 4%;
+  margin-bottom: 0px;
+  margin-top: -15px;
+}
+
+
+

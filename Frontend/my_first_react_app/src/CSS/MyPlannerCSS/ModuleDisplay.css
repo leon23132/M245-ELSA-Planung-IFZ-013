@@ -1,15 +1,16 @@
-.module-section{
-    padding: 0%;
-    margin: 0%;
+.module-section {
+    padding: 0;
+    margin: 0;
     min-width: 200px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
- 
+    position: relative;
+    /* Position relative, um Mario korrekt zu positionieren */
 }
+
 .module-display {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
     padding: 10px;
     margin: 0.5%;
     color: #fff;
@@ -27,21 +28,22 @@
     margin-bottom: 10px;
     min-width: 200px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* Position relative, um Mario korrekt zu positionieren */
 }
 
 
-.Mario {
-    position: absolute; /* Position absolut, um den Mario innerhalb des .module-day zu positionieren */
-    top: -50px; /* Anpassen der Top-Position, um den Mario über dem "Monday" zu positionieren */
-    left: 50%; /* Zentrieren des Marios horizontal */
-    transform: translateX(-50%); /* Zentrieren des Marios horizontal */
+.mario-placeholder {
+    height: 60px;
+    /* Gleiche Höhe wie der Mario-Bereich */
+    width: 100%;
+    /* Gleiche Breite wie der Mario-Bereich */
 }
-
 
 .module-list {
     margin-right: 10px;
     margin-left: 0.1%;
-    flex-wrap: wrap; /* Ändere flex-wrap auf wrap */
+    flex-wrap: wrap;
     gap: 20px;
     padding: 10px 0;
 }
@@ -51,13 +53,14 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.full-width-mario {
-    width: 100%;
+
+
+
+
+.ButtonsContainer {
+    margin-top: 20px;
 }
-.mario-block {
-    position: absolute; /* Positionierung relativ zum nächsten positionierten Elternelement */
-    z-index: 1; /* Stelle sicher, dass der Mario-Block über anderen Elementen liegt */
-    /* Optional: Weitere Stilregeln, um die Position des Mario-Blocks anzupassen */
-    top: 0; /* Oben anordnen */
-    left: 0; /* Links anordnen */
+
+button {
+    margin-right: 10px;
 }

@@ -1,69 +1,76 @@
-import React, { useState } from "react";
-import { ModuleBlock } from "./ModuleBlock"; // Importiere die ModuleBlock-Komponente
-import './../CSS/MyPlannerCSS/ModuleDisplay.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./../CSS/MyPlannerCSS/SideQuestList.css";
 
-export default function ModuleDisplay() {
-    // Zustand für die Moduldaten und das aktuell ausgeklappte Modul
-    const [modules, setModules] = useState([
-        {
-            id: 1,
-            moduleName: "Combat Training",
-            moduleDescription: "Learn the basics of combat",
-            moduleDay: "Monday",
-            sideQuests: [
-                { sqId: 1, sqName: "Defend the Castle", sqDescription: "Protect the castle from invaders", sqDay: "Monday", sqTime: "10:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false },
-                { sqId: 2, sqName: "Slay the Dragon", sqDescription: "Conquer the fearsome dragon", sqDay: "Monday", sqTime: "14:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: true }
-            ],
-            isOpen: false // Zustand für das Ausklappen
-        },
-        {
-            id: 2,
-            moduleName: "Exploration",
-            moduleDescription: "Explore the unknown territories",
-            moduleDay: "Tuesday",
-            sideQuests: [
-                { sqId: 3, sqName: "Discover the Ancient Ruins", sqDescription: "Uncover the secrets of the ancient ruins", sqDay: "Tuesday", sqTime: "09:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false }
-            ],
-            isOpen: false // Zustand für das Ausklappen
-        },
-        {
-            id: 3,
-            moduleName: "Questing",
-            moduleDescription: "Embark on epic quests",
-            moduleDay: "Wednesday",
-            sideQuests: [
-                { sqId: 4, sqName: "Rescue the Princess", sqDescription: "Save the princess from the evil sorcerer", sqDay: "Wednesday", sqTime: "13:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false },
-                { sqId: 5, sqName: "Retrieve the Holy Relic", sqDescription: "Recover the sacred relic stolen by bandits", sqDay: "Wednesday", sqTime: "15:00", sqWeek: 1, sqDeadline: new Date(), userSqStatusFinish: false }
-            ],
-            isOpen: false // Zustand für das Ausklappen
-        },
-        // Weitere Testdaten hier hinzufügen...
-    ]);
+const SideQuestList = ({ module, onBack }) => {
+  const [sideQuests, setSideQuests] = useState([]);
 
-    // Funktion zum Ausklappen eines Moduls
-    const toggleModuleOpen = (moduleId) => {
-        setModules(prevModules => (
-            prevModules.map(module => {
-                if (module.id === moduleId) {
-                    return { ...module, isOpen: !module.isOpen }; // Aktualisiere den Zustand für das Ausklappen
-                }
-                return module;
-            })
-        ));
-    };
+  useEffect(() => {
+    if (module) {
+      fetchSideQuests(module.sideQuest.module.modulId);
+    }
+  }, [module]);
 
+  const fetchSideQuests = async (moduleId) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/sqs/module/${moduleId}`);
+      setSideQuests(response.data);
+    } catch (error) {
+      console.error("Error fetching side quests:", error);
+      setSideQuests([]);
+    }
+  };
+
+  if (!module || !module.sideQuests || module.sideQuests.length === 0) {
     return (
-        <div className="module-display">
-            <h2>Module Display</h2>
-            {/* Iteriere über die Moduldaten und rendere für jedes Modul einen ModuleBlock */}
-            <div className="module-list">
-                {modules.map(module => (
-                    <React.Fragment key={module.id}>
-                        <div className="module-day">{module.moduleDay}</div> {/* Tag anzeigen */}
-                        <ModuleBlock module={module} isOpen={module.isOpen} toggleModuleOpen={toggleModuleOpen} /> {/* ModuleBlock anzeigen */}
-                    </React.Fragment>
-                ))}
-            </div>
-        </div>
+      <div className="sidequest-list">
+        <button onClick={onBack} className="sidequest-btn sidequest-btn-secondary sidequest-btn-back">
+          Back
+        </button>
+        <h2>{module?.sideQuest?.module?.moduleName} - Side Quests</h2>
+        <p>Keine Side Quests vorhanden.</p>
+      </div>
     );
-}
+  }
+
+  return (
+    <div className="sidequest-list">
+      <button onClick={onBack} className="sidequest-btn sidequest-btn-secondary sidequest-btn-back">
+        Back
+      </button>
+      <h2>{module?.sideQuest?.module?.moduleName} - Side Quests</h2>
+      <table className="sidequest-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Week</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sideQuests.map((sq) => (
+            <tr key={sq.sqId} className={sq.userSqStatusFinish ? "finished" : "in-progress"}>
+              <td>{sq.sqName}</td>
+              <td>{sq.sqDescription}</td>
+              <td>{sq.sqDay}</td>
+              <td>{sq.sqTime}</td>
+              <td>{sq.sqWeek}</td>
+              <td>{new Date(sq.sqDeadline).toLocaleDateString()}</td>
+              <td>{sq.userSqStatusFinish ? "Finished" : "In Progress"}</td>
+              <td>
+                <button className="sidequest-btn sidequest-btn-success">Finish</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default SideQuestList;

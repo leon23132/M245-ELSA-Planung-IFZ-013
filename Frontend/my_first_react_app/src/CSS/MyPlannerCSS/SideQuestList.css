@@ -1,0 +1,80 @@
+/* SideQuestList.css */
+
+.sidequest-list {
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+
+.sidequest-list h2 {
+    margin-bottom: 20px;
+}
+
+.sidequest-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sidequest-table th,
+.sidequest-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+    background: repeating-linear-gradient(45deg, #000 0 1em, #111 0 2em);
+    background-size: cover;
+}
+
+.finished {
+    background-color: lightgreen;
+}
+
+.in-progress {
+    background-color: #ffcccb;
+}
+
+/* Specific classes for SideQuestList buttons */
+.sidequest-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+}
+
+.sidequest-btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.sidequest-btn-success:hover {
+    background-color: #218838;
+}
+
+.sidequest-btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    margin-bottom: 20px; /* Add margin for spacing */
+}
+
+.sidequest-btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.sidequest-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.sidequest-btn-back {
+    background-color: #dc3545; /* Red color for Back button */
+    color: #fff;
+}
+
+.sidequest-btn-back:hover {
+    background-color: #c82333; /* Darker red on hover */
+}

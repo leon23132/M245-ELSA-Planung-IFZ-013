@@ -27,12 +27,7 @@ export function GlobalNavigation() {
                     <div className="col-2">
                         <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
                             to="/home">Home</NavLink>
-                        {isLoggedIn && (
-                            <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
-                                to="/task">Task</NavLink>
-
-                        )}
-
+        
                         {isLoggedIn && (
                             <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
                                 to="/modules">Module</NavLink>

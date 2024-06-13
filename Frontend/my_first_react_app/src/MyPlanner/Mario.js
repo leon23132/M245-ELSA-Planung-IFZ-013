@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MarioImage1 from './../anImages/Mario/MarioImage_1.png';
 import './../CSS/MyPlannerCSS/Mario.css';
 import MarioImage2 from './../anImages/Mario/MarioImage_2.png';
@@ -14,12 +14,6 @@ function Mario() {
 
     const images = [MarioImage1, MarioImage2, MarioImage3, MarioImage4, MarioImage5];
 
-    useEffect(() => {
-        if (isAnimating) {
-            startAnimation();
-        }
-    }, [isAnimating]);
-
     const startAnimation = () => {
         setIsAnimating(true);
         let index = 0;
@@ -30,17 +24,15 @@ function Mario() {
                 setTimeout(() => {
                     setIsAnimating(false);
                     setCurrentImage(MarioImage1);
+                    clearInterval(id); // Clear Interval nach Abschluss der Animation
                 }, frameDuration);
-                clearInterval(id);
             }
         }, animationSpeed);
     };
 
     return (
         <div>
-            <div className="ImageContainer">
-                <img src={currentImage} alt="Super Mario" className="MarioImage" />
-            </div>
+            <img src={currentImage} alt="Super Mario" className="MarioImage" />
             <div className="ButtonsContainer">
                 {!isAnimating && <button onClick={startAnimation}>Start Animation</button>}
             </div>

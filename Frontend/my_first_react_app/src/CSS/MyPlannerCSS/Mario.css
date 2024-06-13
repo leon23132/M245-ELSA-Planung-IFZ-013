@@ -1,12 +1,53 @@
 .MarioImage {
-    width: 100px; /* Setze die Breite der Mario-Bilder */
+    width: 80px; /* Setze die Breite der Mario-Bilder */
     height: auto; /* Auto-Höhe, um das Seitenverhältnis beizubehalten */
 }
 
 .ButtonsContainer {
-    margin-top: 20px; /* Abstand zum oberen Element */
+    margin-top: 10px; /* Abstand zum oberen Element */
 }
 
 button {
     margin-right: 10px; /* Abstand zwischen den Buttons */
+}
+
+.MarioComponent {
+    position: absolute;
+    top: -10px; /* Anpassen der Top-Position, um den Mario über dem Tag zu positionieren */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Setze die Breite der Mario-Bilder */
+    height: auto; /* Auto-Höhe, um das Seitenverhältnis beizubehalten */
+}
+
+.MysteryBlockImage {
+    width: 30px; /* Setze die Breite des Mystery-Blocks */
+    height: auto; /* Auto-Höhe, um das Seitenverhältnis beizubehalten */
+    position: absolute; /* Positionierung absolut, um den Mystery-Block über dem Mario zu positionieren */
+    top: -15px; /* Anpassen der Top-Position, um den Mystery-Block über dem Mario zu positionieren */
+    left: 50%; /* Zentrieren des Mystery-Blocks horizontal */
+    transform: translateX(-50%); /* Zentrieren des Mystery-Blocks horizontal */
+    animation-name: mysteryBlockAnimation; /* Definiere den Namen der Animationssequenz */
+    animation-duration: 2s; /* Setze die Dauer der Animation auf 2 Sekunden */
+    animation-direction: alternate; /* Lasse die Animation hin und her gehen */
+    animation-iteration-count: infinite; /* Lasse die Animation unendlich oft wiederholen */
+}
+
+
+@keyframes mysteryBlockAnimation {
+    0% {
+        transform: scale(1); /* Startzustand: normale Größe */
+    }
+    50% {
+        transform: scale(1.2); /* Zwischenzustand: vergrößerte Größe */
+    }
+    100% {
+        transform: scale(1); /* Endzustand: normale Größe */
+    }
+}
+
+
+.mario-placeholder {
+    height: 40px; /* Gleiche Höhe wie der Mario-Bereich */
+    width: 100%; /* Gleiche Breite wie der Mario-Bereich */
 }
