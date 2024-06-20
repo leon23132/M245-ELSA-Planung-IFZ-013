@@ -3,6 +3,7 @@ import axios from "axios";
 import "./../CSS/MyPlannerCSS/SideQuestList.css";
 
 const API_URL = "http://localhost:8080/sqs/filteredByWeekAndDay";
+const UPDATE_URL = "http://localhost:8080/sqs/usersq/updateStatus";
 
 const SideQuestList = ({ module, onBack }) => {
   const [sideQuests, setSideQuests] = useState([]);
@@ -15,8 +16,8 @@ const SideQuestList = ({ module, onBack }) => {
     try {
       const response = await axios.get(API_URL, {
         params: {
-          username: "Admin",
-          week: "Week 1",
+          username: "Admin", // Beispielusername, bitte entsprechend anpassen
+          week: "Week 1",    // Beispielwoche, bitte entsprechend anpassen
           day: module.sideQuest.module.moduleDay,
         },
       });
@@ -26,6 +27,30 @@ const SideQuestList = ({ module, onBack }) => {
       console.error("Error fetching side quests:", error);
     }
   };
+
+  const handleFinishClick = async (userSqId) => {
+    try {
+      const response = await axios.put(`${UPDATE_URL}/${userSqId}/${1}`, {
+        // Hier wird der Status direkt als 1 (Finished) übergeben
+      });
+  
+
+      // Aktualisierte Side Quests nach der Antwort des Servers setzen
+      setSideQuests(prevState =>
+        prevState.map(sq =>
+          sq.id === userSqId  // Vergleichen Sie mit der id der UserSq-Entität
+            ? { ...sq, userSqStatus: 1, userSqStatusFinish: 1 }
+            : sq
+        )
+      );
+  
+      console.log("Response from PUT request:", response.data);
+    } catch (error) {
+      console.error("Error updating side quest status:", error);
+    }
+  };
+  
+  
 
   if (!sideQuests || sideQuests.length === 0) {
     return (
@@ -68,7 +93,14 @@ const SideQuestList = ({ module, onBack }) => {
               <td>{new Date(sq.sideQuest.sqDeadline).toLocaleDateString()}</td>
               <td>{sq.userSqStatusFinish ? "Finished" : "In Progress"}</td>
               <td>
-                <button className="sidequest-btn sidequest-btn-success">Finish</button>
+                {!sq.userSqStatusFinish && (
+                  <button
+                    className="sidequest-btn sidequest-btn-success"
+                    onClick={() => handleFinishClick(sq.id)}
+                  >
+                    Finish
+                  </button>
+                )}
               </td>
             </tr>
           ))}

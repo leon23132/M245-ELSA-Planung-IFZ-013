@@ -13,6 +13,7 @@ import m459.TodoApplication.TodoApp.Model.Module;
 
 import m459.TodoApplication.TodoApp.Model.Sidequests;
 import m459.TodoApplication.TodoApp.Model.UserSq;
+import m459.TodoApplication.TodoApp.Model.Users.User;
 import m459.TodoApplication.TodoApp.Services.SQService;
 
 @RestController
@@ -30,6 +31,10 @@ public class SQController {
     @GetMapping("/all")
     public List<UserSq> getAllUserSqs() {
         return sqService.getAllUserSqs();
+    }
+    @GetMapping("/users/all")
+    public List<User> getAllUsers() {
+        return sqService.getAllUsers();
     }
 
     /*
@@ -79,19 +84,61 @@ public class SQController {
             UserSq updatedUserSq = sqService.updateUserSq(userSq);
             return new ResponseEntity<>(updatedUserSq, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
-            // Wenn der UserSq nicht gefunden wurde, wird ein Fehler 404 (Not Found) zurückgegeben
+            // Wenn der UserSq nicht gefunden wurde, wird ein Fehler 404 (Not Found)
+            // zurückgegeben
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            // Für alle anderen Fehler wird ein Fehler 500 (Internal Server Error) zurückgegeben
+            // Für alle anderen Fehler wird ein Fehler 500 (Internal Server Error)
+            // zurückgegeben
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/filteredByWeekAndDay")
     public List<UserSq> getSideQuestsByUsernameWeekAndDay(@RequestParam String username,
-                                                          @RequestParam String week,
-                                                          @RequestParam String day) {
+            @RequestParam String week,
+            @RequestParam String day) {
         return sqService.findSideQuestsByUsernameWeekAndDay(username, week, day);
     }
+
+    @PutMapping("/usersq/updateStatus/{id}/{userSqStatus}")
+    public ResponseEntity<UserSq> updateUserSqStatus(@PathVariable int id, @PathVariable int userSqStatus) {
+        try {
+            UserSq updatedUserSq = sqService.updateUserSqStatus(id, userSqStatus);
+            return new ResponseEntity<>(updatedUserSq, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/modules/add")
+    public ResponseEntity<Module> addModule(@RequestBody Module module) {
+        try {
+            Module addedModule = sqService.addModule(module);
+            return new ResponseEntity<>(addedModule, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/sidequests/add")
+    public ResponseEntity<Sidequests> addSidequest(@RequestBody Sidequests sidequest) {
+        Sidequests newSidequest = sqService.addSidequest(sidequest);
+        return new ResponseEntity<>(newSidequest, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/usersq/add")
+    public ResponseEntity<UserSq> addUserSq(@RequestBody UserSq userSq) {
+        try {
+            UserSq addedUserSq = sqService.addUserSq(userSq);
+            return new ResponseEntity<>(addedUserSq, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    
 
 }

@@ -1,5 +1,7 @@
 package m459.TodoApplication.TodoApp.Model;
 
+import org.openqa.selenium.devtools.v119.v119CdpInfo;
+
 import jakarta.persistence.*;
 import m459.TodoApplication.TodoApp.Model.Users.User;
 
@@ -50,6 +52,8 @@ public class UserSq {
         return user;
     }
 
+
+
     public void setUser(User user) {
         this.user = user;
     }
@@ -68,6 +72,21 @@ public class UserSq {
 
     public void setUserSqStatusFinish(int userSqStatusFinish) {
         this.userSqStatusFinish = userSqStatusFinish;
+    }
+
+    // Methoden zur Setzung von IDs, um die Assoziationen zu vereinfachen
+    public void setSideQuestID(int sq_id) {
+        if (this.sideQuest == null) {
+            this.sideQuest = new Sidequests();
+        }
+        this.sideQuest.setSqId(sq_id);
+    }
+
+    public void setUserId(Long user_id) {
+        if (this.user == null) {
+            this.user = new User();
+        }
+        this.user.setId(user_id);
     }
 
     // Methode zur Aktualisierung der Benutzerstatusinformationen

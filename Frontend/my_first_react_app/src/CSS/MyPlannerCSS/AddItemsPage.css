@@ -1,0 +1,119 @@
+/* src/CSS/AddItemsPage.css */
+.add-items-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-items-page h2 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  .add-items-page .add-item-btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .add-items-page .add-item-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-items-page .new-module-form {
+    margin-top: 20px;
+  }
+  
+  .add-items-page .new-module-form input,
+  .add-items-page .new-module-form textarea {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-items-page .new-module-form .save-item-btn {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .add-items-page .new-module-form .save-item-btn:hover {
+    background-color: #218838;
+  }
+  
+  .add-items-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .add-items-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .add-item-btn {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .add-item-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .new-module-form,
+  .new-sidequest-form {
+    margin-top: 20px;
+  }
+  
+  .input-field,
+  .textarea-field,
+  .select-day {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .textarea-field {
+    resize: vertical; /* Erlaubt vertikales Resizing der Textarea */
+  }
+  
+  .save-item-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .save-item-btn:hover {
+    background-color: #218838;
+  }
+  

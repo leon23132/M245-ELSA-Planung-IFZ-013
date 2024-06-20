@@ -6,6 +6,7 @@ import './CSS/GlobalNavigationSt.css';
 import LoginForm from "./Login/LoginForm";
 import SignupForm from "./Login/SignupForm";
 import ModuleDisplay from "./MyPlanner/ModuleDisplay";
+import AddItemsPage from "./MyPlanner/AddItemsPage";
 
 
 export function GlobalNavigation() {
@@ -31,6 +32,13 @@ export function GlobalNavigation() {
                         {isLoggedIn && (
                             <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
                                 to="/modules">Module</NavLink>
+
+                        )}
+
+                         
+                        {isLoggedIn && (
+                            <NavLink className="m-2 btn btn-block btn-primary-bar" activeClassName="active" id="Navigation"
+                                to="/AddItemsPage">AddItemsPage</NavLink>
 
                         )}
 
@@ -63,6 +71,7 @@ export function GlobalNavigation() {
                             <Route path="/" element={<Navigate to="/home" />} />
                             <Route path="/Signup" element={<SignupForm />} />
                             <Route path="/*" element={<Navigate to="/home" />} />
+                            <Route path="/AddItemsPage" element={<AddItemsPage />} /> // Füge die Route zur ModuleDisplay-Seite hinzu
                         </Routes>
                     </div>
                 </div>
