@@ -31,22 +31,7 @@ public class SQController {
     public List<UserSq> getAllUserSqs() {
         return sqService.getAllUserSqs();
     }
-
-    /*
-     * @GetMapping("/filtered")
-     * public List<UserSq> getUserSqsByUsernameAndDay(@RequestParam String
-     * username, @RequestParam String day) {
-     * return sqService.getUserSqsByUsernameAndDay(username, day);
-     * }
-     */
-    /*
-     * @GetMapping("/filtered")
-     * public List<UserSq> getUserSqsByUsernameAndDay(@RequestParam String
-     * username, @RequestParam String day) {
-     * return sqService.getUserSqsByUsernameAndDay(username, day);
-     * }
-     */
-
+    
     @GetMapping("/filtered")
     public List<Map<String, Object>> getUserSqsByUsernameAndDay(@RequestParam String username,
             @RequestParam String day) {

@@ -1,17 +1,17 @@
 import React from "react";
-import TicTacToe from "../TicTacToe";
 import "./../CSS/home.css";
+import background from "../Images/background.jpg"; // Import the background image
 
 const Home = () => {
   return (
-    <div className="home-container">
-      <h1 className="Boreded-Text">Willkommen zu ELSA</h1>
-      <p className="Boreded-Text">Organisieren Sie Ihren schulischen Alltag!</p>
-      <div>
-      <TicTacToe /> {/* Rendern der TicTacToe-Komponente hier */}
-      </div>
+    <div className="home-container" style={{
+      backgroundImage: `url(${background})`,
+      borderRadius: '20px', // Adjust the radius value as per your design
+    }}>
+      <h1>Willkommen zu ELSA</h1>
+      <p>Die bessere alternatieve zu Tocco!</p>
       <div className="home-containerImage">
-
+        {/* You can add more content inside this div if needed */}
       </div>
     </div>
   );

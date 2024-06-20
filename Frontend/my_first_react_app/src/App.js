@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { GlobalNavigation } from './GlobalNavigation'; // Stellen Sie sicher, dass der Pfad korrekt ist
-import HomeImage from './Images/LogoImage.jpg'
-import Logo_TWO from './Images/Logo_TWOTR.png'
+import HomeImage from './Images/LogoImage.jpg';
+import ELSA from './Images/ELSA.jpg';
 
 function App() {
     return (
@@ -12,7 +12,7 @@ function App() {
             </header>
             <body className='Body-App'>
                 <div className='Bodie-Todo'>
-                    <img src={Logo_TWO} alt='Beschreibung des Bildes' width="50" height="33" className='LogoImage' />
+                    <img src={ELSA} alt='Beschreibung des Bildes' width="50" height="33" className='LogoImage' />
 
                     <GlobalNavigation />
 
@@ -21,7 +21,7 @@ function App() {
             <footer className="footer">
                 <div>
                     {/* Hier kannst du den Inhalt deines Footers einfügen */}
-                    &copy; {new Date().getFullYear()} Todo App. Alle Rechte vorbehalten.
+                    &copy; {new Date().getFullYear()} ELSA App. Alle Rechte vorbehalten.
                 </div>
             </footer>
 

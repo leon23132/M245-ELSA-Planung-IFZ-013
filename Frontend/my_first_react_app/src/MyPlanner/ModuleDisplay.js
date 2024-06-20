@@ -10,7 +10,8 @@ const API_URL = "http://localhost:8080/sqs/filteredByWeekAndDay";
 const ModuleDisplay = () => {
   const [modules, setModules] = useState([]);
   const [selectedModule, setSelectedModule] = useState(null);
-  const showMarioOnDay = "Tuesday"; // Ändere dies bei Bedarf
+  const [activeDay, setActiveDay] = useState(null); // New state for the active day
+  const showMarioOnDay = "HIER KOMMT WOCHENTAG"; // Ändere dies bei Bedarf
 
   useEffect(() => {
     fetchData();
@@ -49,6 +50,10 @@ const ModuleDisplay = () => {
     setSelectedModule(null);
   };
 
+  const handleDayClick = (day) => {
+    setActiveDay(activeDay === day ? null : day); // Toggle the active day
+  };
+
   const groupedModules = modules.reduce((acc, module) => {
     acc[module.sideQuest.module.moduleDay] = [
       ...(acc[module.sideQuest.module.moduleDay] || []),
@@ -62,22 +67,27 @@ const ModuleDisplay = () => {
       {selectedModule ? (
         <SideQuestList module={selectedModule} onBack={handleBack} />
       ) : (
-        Object.entries(groupedModules).map(([day, dayModules]) => (
-          <div key={day} className="module-section">
-            {day === showMarioOnDay && <Mario className="Mario" />}
-            <h3 className="module-day">{day}</h3>
-            <div className="module-list">
-              {dayModules.map((module, index) => (
-                <ModuleBlock
-                  key={module.id}
-                  module={module}
-                  onModuleClick={handleModuleClick}
-                  small={index % 2 !== 0} // Beispiel: Jedes zweite Modul ist kleiner
-                />
-              ))}
+        <div className="days-container">
+          {Object.entries(groupedModules).map(([day, dayModules]) => (
+            <div
+              key={day}
+              className={`module-section ${activeDay === day ? 'active' : ''}`}
+              onClick={() => handleDayClick(day)}
+            >
+              {day === showMarioOnDay && <Mario className="Mario" />}
+              <h3 className="module-day">{day}</h3>
+              <div className="module-list">
+                {dayModules.map((module) => (
+                  <ModuleBlock
+                    key={module.id}
+                    module={module}
+                    onModuleClick={handleModuleClick}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        ))
+          ))}
+        </div>
       )}
     </div>
   );

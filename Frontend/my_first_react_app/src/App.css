@@ -1,13 +1,11 @@
 .App {
   
   text-align: center;
-  background: rgb(2,0,36);
-background: radial-gradient(circle, rgba(2,0,36,1) 19%, rgba(0,212,255,1) 46%, rgba(62,62,88,1) 78%);
-background-size: cover;
 
+background-size: cover;
+background-color: rgb(81, 192, 229);
 
 text-align: center;
-background: repeating-linear-gradient(45deg, #000 0 1em, #111 0 2em);
 background-size: cover;
 margin: 0;
 height: auto;

@@ -1,66 +1,86 @@
-.module-section {
-    padding: 0;
-    margin: 0;
-    min-width: 200px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    /* Position relative, um Mario korrekt zu positionieren */
-}
-
+/* Centering the container and making it full screen height */
 .module-display {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    min-height: 50vh;
     padding: 10px;
-    margin: 0.5%;
-    color: #fff;
+    margin: 0;
+    color: #000;
+}
+
+.days-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.module-section {
+    padding: 0;
+    margin: 0 10px;
+    width: 150px; /* Wider day button */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: visible; /* Ensure children can expand outside */
+    transition: all 0.5s ease-out;
+    background: #fff;
 }
 
 .module-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
+    font-size: 16px;
     width: 100%;
+    text-align: center;
 }
 
 .module-day {
+    color: black;
     font-weight: bold;
-    margin-bottom: 10px;
-    min-width: 200px;
+    margin: 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    /* Position relative, um Mario korrekt zu positionieren */
-}
-
-
-.mario-placeholder {
-    height: 60px;
-    /* Gleiche Höhe wie der Mario-Bereich */
-    width: 100%;
-    /* Gleiche Breite wie der Mario-Bereich */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center; /* Center the text */
 }
 
 .module-list {
-    margin-right: 10px;
-    margin-left: 0.1%;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     padding: 10px 0;
+    display: none;
+    width: 100%; /* Same width as the day button */
+    box-sizing: border-box;
+    background: #f9f9f9;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    max-height: 0; /* Initially hidden */
+    opacity: 0;
+    overflow: hidden; /* Ensure it slides out smoothly */
+}
+
+.module-section.active .module-list {
+    display: flex;
+    max-height: 500px; /* Adjust as needed for the list length */
+    opacity: 1;
 }
 
 .module-block {
-    min-width: 200px;
+    min-width: 80px;
+    width: calc(100% - 20px);
+    max-width: 100%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
-.ButtonsContainer {
-    margin-top: 20px;
-}
-
-button {
-    margin-right: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    background: #e0e0e0;
+    text-align: center;
 }

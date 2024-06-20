@@ -78,3 +78,9 @@
 .sidequest-btn-back:hover {
     background-color: #c82333; /* Darker red on hover */
 }
+th{
+    color: #fff;
+}
+td{
+    color: #fff;
+}
