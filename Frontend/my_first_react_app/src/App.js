@@ -21,7 +21,7 @@ function App() {
             <footer className="footer">
                 <div>
                     {/* Hier kannst du den Inhalt deines Footers einfügen */}
-                    &copy; {new Date().getFullYear()} Todo App. Alle Rechte vorbehalten.
+                    &copy; {new Date().getFullYear()} E.L.A. Alle Rechte vorbehalten.
                 </div>
             </footer>
 

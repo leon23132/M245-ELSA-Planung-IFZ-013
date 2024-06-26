@@ -16,7 +16,7 @@ const SideQuestList = ({ module, onBack }) => {
     try {
       const response = await axios.get(API_URL, {
         params: {
-          username: "Admin", // Beispielusername, bitte entsprechend anpassen
+          username: "DemoPitchUser", // Beispielusername, bitte entsprechend anpassen
           week: "Week 1",    // Beispielwoche, bitte entsprechend anpassen
           day: module.sideQuest.module.moduleDay,
         },

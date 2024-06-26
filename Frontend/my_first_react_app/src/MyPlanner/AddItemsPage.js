@@ -42,13 +42,13 @@ const AddItemsPage = () => {
 
 
   const daysOfWeek = [
-    "Montag",
-    "Dienstag",
-    "Mittwoch",
-    "Donnerstag",
-    "Freitag",
-    "Samstag",
-    "Sonntag"
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
   ];
 
   const handleToggleNewModule = () => {
@@ -104,7 +104,7 @@ const AddItemsPage = () => {
       } else {
         console.log("User not found in UserData");
       }
-      console.log(SelectetModule);
+      console.log(selectedUser);
     } catch (error) {
       console.log("Error Selector Data");
     }

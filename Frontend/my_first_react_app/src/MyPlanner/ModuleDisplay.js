@@ -23,7 +23,7 @@ const ModuleDisplay = () => {
       const promises = weekdays.map(async (day) => {
         const response = await axios.get(API_URL, {
           params: {
-            username: "Admin",
+            username: "DemoPitchUser",
             week: "Week 1",
             day: day,
           },
@@ -64,7 +64,7 @@ const ModuleDisplay = () => {
       ) : (
         Object.entries(groupedModules).map(([day, dayModules]) => (
           <div key={day} className="module-section">
-            {day === showMarioOnDay && <Mario className="Mario" />}
+          
             <h3 className="module-day">{day}</h3>
             <div className="module-list">
               {dayModules.map((module, index) => (

@@ -34,7 +34,6 @@ function Mario() {
         <div>
             <img src={currentImage} alt="Super Mario" className="MarioImage" />
             <div className="ButtonsContainer">
-                {!isAnimating && <button onClick={startAnimation}>Start Animation</button>}
             </div>
         </div>
     );

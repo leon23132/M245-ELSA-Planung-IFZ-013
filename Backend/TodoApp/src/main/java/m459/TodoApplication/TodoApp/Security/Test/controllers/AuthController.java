@@ -18,7 +18,6 @@ import m459.TodoApplication.TodoApp.Security.Test.payload.response.JwtResponse;
 import m459.TodoApplication.TodoApp.Security.Test.payload.response.MessageResponse;
 import m459.TodoApplication.TodoApp.Security.Test.security.jwt.JwtUtils;
 import m459.TodoApplication.TodoApp.Security.Test.security.services.UserDetailsImpl;
-import m459.TodoApplication.TodoApp.Model.Users.ERole;
 import m459.TodoApplication.TodoApp.Model.Users.Role;
 
 import org.springframework.beans.factory.annotation.Autowired;
